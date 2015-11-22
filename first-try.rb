@@ -23,11 +23,9 @@ class AmicableNumbersSum
   end
 
   def find_dups(hash)
-    dups = []
-    hash.each do |num, sum|
-      dups << num if hash[sum] && hash[sum] == num && num != sum
-    end
-    dups
+    hash.select do |num, sum|
+      hash[sum] && hash[sum] == num && num != sum
+    end.values
   end
 end
 
